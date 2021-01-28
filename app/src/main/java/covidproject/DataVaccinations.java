@@ -3,15 +3,15 @@ package covidproject;
 import java.util.ArrayList;
 
 public class DataVaccinations {
-	private ArrayList<String> xs;
+	private ArrayList<Long> xs;
 	private ArrayList<Integer> ys;
 
 	public DataVaccinations() {
-		xs = new ArrayList<String>();
+		xs = new ArrayList<Long>();
 		ys = new ArrayList<Integer>();
 	}
 
-	public ArrayList<String> getXValues() {
+	public ArrayList<Long> getXValues() {
 		return xs;
 	}
 
@@ -19,7 +19,7 @@ public class DataVaccinations {
 		return ys;
 	}
 
-	public void add(String x, int y) {
+	public void add(long x, int y) {
 		xs.add(x);
 		ys.add(y);
 	}
