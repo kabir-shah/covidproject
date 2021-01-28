@@ -15,6 +15,7 @@ import javafx.event.EventHandler;
 import javafx.stage.Stage;
 
 import covidproject.Data;
+import covidproject.DataVaccinations;
 
 public class App extends Application {
 	public void start(Stage stage) {
@@ -32,7 +33,8 @@ public class App extends Application {
 				if (command.equals("update")) {
 					Data.update();
 				} else if (command.equals("vaccinations")) {
-					System.out.println(Data.vaccinations().getYValues().get(0));
+					DataVaccinations dataVaccinations = Data.vaccinations();
+					System.out.println(dataVaccinations.getYValues().get(0));
 				} else {
 					output.setText("Your command was: " + command);
 				}
