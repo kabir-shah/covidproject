@@ -17,6 +17,8 @@ public class App extends Application {
 	}
 
 	public static void main(String[] args) {
-		launch();
+		Stage stage1;
+		GraphTest test1 = new GraphTest (1, 750);
+		launch (args);
 	}
 }
