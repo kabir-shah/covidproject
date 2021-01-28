@@ -37,20 +37,18 @@ public class App extends Application {
 				} else if (command.equals("vaccinations")) {
 					DataVaccinations dataVaccinations = Data.vaccinations();
 					lineGraph.updateGraph(dataVaccinations.getXValues(), dataVaccinations.getYValues());
-					System.out.println(dataVaccinations.getYValues().get(0));
 				} else {
 					output.setText("Your command was: " + command);
 				}
 			}
 		});
 
-		VBox box = new VBox(8, title, lineGraph.getGraph(), output, input);
-		box.setMargin(title, new Insets(0, 0, 300, 0));
+		VBox box = new VBox(8, title, input, output, lineGraph.getGraph());
 
 		StackPane stack = new StackPane(box);
 		stack.setMargin(box, new Insets(30));
 
-		Scene scene = new Scene(stack, 640, 480);
+		Scene scene = new Scene(stack, 1000, 750);
 		stage.setTitle("Covid Project");
 		stage.setScene(scene);
 		stage.show();
