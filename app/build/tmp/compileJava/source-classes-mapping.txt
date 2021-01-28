@@ -1,7 +1,11 @@
+covidproject/DateCoordinate.java
+ covidproject.DateCoordinate
+covidproject/Data.java
+ covidproject.Data
+covidproject/DataVaccinations.java
+ covidproject.DataVaccinations
 covidproject/App.java
  covidproject.App
  covidproject.App$1
-covidproject/Data.java
- covidproject.Data
 covidproject/GraphTest.java
  covidproject.GraphTest

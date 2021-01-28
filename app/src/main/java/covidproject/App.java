@@ -1,5 +1,6 @@
 package covidproject;
 
+import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -19,6 +20,7 @@ import covidproject.DataVaccinations;
 
 public class App extends Application {
 	public void start(Stage stage) {
+		GraphTest lineGraph = new GraphTest (new ArrayList<Integer>(), new ArrayList<Integer>());
 		Text title = new Text("Covid Project");
 		title.setFont(Font.font("helvetica", FontWeight.BOLD, FontPosture.REGULAR, 30));
 
@@ -34,6 +36,7 @@ public class App extends Application {
 					Data.update();
 				} else if (command.equals("vaccinations")) {
 					DataVaccinations dataVaccinations = Data.vaccinations();
+					lineGraph.updateGraph(dataVaccinations.getXValues(), dataVaccinations.getYValues());
 					System.out.println(dataVaccinations.getYValues().get(0));
 				} else {
 					output.setText("Your command was: " + command);
@@ -41,7 +44,7 @@ public class App extends Application {
 			}
 		});
 
-		VBox box = new VBox(8, title, output, input);
+		VBox box = new VBox(8, title, lineGraph.getGraph(), output, input);
 		box.setMargin(title, new Insets(0, 0, 300, 0));
 
 		StackPane stack = new StackPane(box);
