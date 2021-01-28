@@ -5,14 +5,14 @@ import java.text.SimpleDateFormat;
 
 import javafx.util.StringConverter;
 
-public class DateCoordinate extends StringConverter<Long> {
+public class DateCoordinate extends StringConverter<Number> {
 	static private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
-	public String toString(Long date) {
-		return sdf.format(new Date(date)).toString();
+	public String toString(Number date) {
+		return sdf.format(new Date(date.longValue())).toString();
 	}
 
-	public Long fromString(String date) {
+	public Number fromString(String date) {
 		try {
 			Long time = sdf.parse(date).getTime();
 			return time;
