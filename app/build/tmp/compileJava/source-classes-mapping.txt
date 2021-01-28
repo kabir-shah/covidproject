@@ -1,4 +1,7 @@
 covidproject/App.java
  covidproject.App
+ covidproject.App$1
+covidproject/Data.java
+ covidproject.Data
 covidproject/GraphTest.java
  covidproject.GraphTest
