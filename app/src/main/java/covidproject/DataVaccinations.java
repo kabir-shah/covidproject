@@ -3,23 +3,23 @@ package covidproject;
 import java.util.ArrayList;
 
 public class DataVaccinations {
-	private ArrayList<Long> xs;
-	private ArrayList<Integer> ys;
+	private ArrayList<Number> xs;
+	private ArrayList<Number> ys;
 
 	public DataVaccinations() {
-		xs = new ArrayList<Long>();
-		ys = new ArrayList<Integer>();
+		xs = new ArrayList<Number>();
+		ys = new ArrayList<Number>();
 	}
 
-	public ArrayList<Long> getXValues() {
+	public ArrayList<Number> getXValues() {
 		return xs;
 	}
 
-	public ArrayList<Integer> getYValues() {
+	public ArrayList<Number> getYValues() {
 		return ys;
 	}
 
-	public void add(long x, int y) {
+	public void add(Number x, Number y) {
 		xs.add(x);
 		ys.add(y);
 	}
