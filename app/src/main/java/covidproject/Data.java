@@ -1,6 +1,5 @@
 package covidproject;
 
-import java.text.SimpleDateFormat;
 import java.io.InputStream;
 import java.io.BufferedReader;
 import java.net.URI;
@@ -10,8 +9,11 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
 import covidproject.DataVaccinations;
+import covidproject.DateCoordinate;
 
 public class Data {
+	static private DateCoordinate converter = new DateCoordinate();
+
 	static private Path load(String file) {
 		return Paths.get("../data/", file);
 	}
@@ -31,7 +33,6 @@ public class Data {
 
 	static public DataVaccinations vaccinations() {
 		DataVaccinations data = new DataVaccinations();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
 		try {
 			BufferedReader reader = Files.newBufferedReader(load("vaccinations.csv"));
@@ -40,7 +41,7 @@ public class Data {
 			while ((rowString = reader.readLine()) != null) {
 				String[] row = rowString.split(",");
 				if (row[0].equals("United States") && row[3].length() > 0) {
-					data.add(sdf.parse(row[2]).getTime(), Integer.parseInt(row[3]));
+					data.add(converter.fromString(row[2]), Integer.parseInt(row[3]));
 				}
 			}
 
