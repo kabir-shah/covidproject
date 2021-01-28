@@ -9,8 +9,11 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
 import covidproject.DataVaccinations;
+import covidproject.DateCoordinate;
 
 public class Data {
+	static private DateCoordinate converter = new DateCoordinate();
+
 	static private Path load(String file) {
 		return Paths.get("../data/", file);
 	}
@@ -34,12 +37,11 @@ public class Data {
 		try {
 			BufferedReader reader = Files.newBufferedReader(load("vaccinations.csv"));
 			String rowString;
-			int i = 0;
 
 			while ((rowString = reader.readLine()) != null) {
 				String[] row = rowString.split(",");
 				if (row[0].equals("United States") && row[3].length() > 0) {
-					data.add(i++, Integer.parseInt(row[3]));
+					data.add(converter.fromString(row[2]), Integer.parseInt(row[3]));
 				}
 			}
 
