@@ -31,8 +31,8 @@ public class App extends Application {
 
 				if (command.equals("update")) {
 					Data.update();
-				} else if (command.equals("cases")) {
-					Data.cases();
+				} else if (command.equals("vaccinations")) {
+					System.out.println(Data.vaccinations().getYValues().get(0));
 				} else {
 					output.setText("Your command was: " + command);
 				}
