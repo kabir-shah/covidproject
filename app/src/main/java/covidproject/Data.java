@@ -31,7 +31,7 @@ public class Data {
 		download("https://github.com/owid/covid-19-data/raw/master/public/data/vaccinations/vaccinations.csv", "vaccinations.csv");
 	}
 
-	static public DataVaccinations vaccinations() {
+	static public DataVaccinations vaccinations(String location) {
 		DataVaccinations data = new DataVaccinations();
 
 		try {
@@ -40,7 +40,7 @@ public class Data {
 
 			while ((rowString = reader.readLine()) != null) {
 				String[] row = rowString.split(",");
-				if (row[0].equals("United States") && row[3].length() > 0) {
+				if (row[0].equals(location) && row[3].length() > 0) {
 					data.add(converter.fromString(row[2]), Integer.parseInt(row[3]));
 				}
 			}

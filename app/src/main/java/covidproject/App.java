@@ -30,14 +30,24 @@ public class App extends Application {
 		TextField input = new TextField("Enter a command");
 		input.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent e) {
-				String command = input.getText();
+				String inputText = input.getText();
+				String[] inputTextParts = inputText.split(" ");
+				String command = inputTextParts[0];
+				String[] args = inputTextParts.length > 1 ?
+					inputText.substring(command.length() + 1).split(",") :
+					new String[]{};
 
 				if (command.equals("update")) {
 					Data.update();
+					output.setText("Data successfully updated.");
 				} else if (command.equals("vaccinations")) {
-					graphs.updateGraph(Data.vaccinations());
+					graphs.updateGraph(
+							args.length > 0 ?
+								Data.vaccinations(args[0]) :
+								Data.vaccinations("United States")
+					);
 				} else {
-					output.setText("Your command was: " + command);
+					output.setText("Command not recognized, your command was: " + command);
 				}
 			}
 		});
