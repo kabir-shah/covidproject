@@ -55,7 +55,7 @@ public class App extends Application {
 						}
 					}
 
-					graphs.updateGraph(allDataVaccinations.get(0));
+					graphs.updateGraph(allDataVaccinations);
 				} else {
 					output.setText("Command not recognized, your command was: " + command);
 				}
