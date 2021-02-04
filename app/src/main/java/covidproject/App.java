@@ -16,11 +16,11 @@ import javafx.event.EventHandler;
 import javafx.stage.Stage;
 
 import covidproject.Data;
-import covidproject.DataVaccinations;
 
 public class App extends Application {
 	public void start(Stage stage) {
-		GraphTest lineGraph = new GraphTest (new ArrayList<Integer>(), new ArrayList<Integer>());
+		GraphTest graphs = new GraphTest();
+
 		Text title = new Text("Covid Project");
 		title.setFont(Font.font("helvetica", FontWeight.BOLD, FontPosture.REGULAR, 30));
 
@@ -35,15 +35,14 @@ public class App extends Application {
 				if (command.equals("update")) {
 					Data.update();
 				} else if (command.equals("vaccinations")) {
-					DataVaccinations dataVaccinations = Data.vaccinations();
-					lineGraph.updateGraph(dataVaccinations.getXValues(), dataVaccinations.getYValues());
+					graphs.updateGraph(Data.vaccinations());
 				} else {
 					output.setText("Your command was: " + command);
 				}
 			}
 		});
 
-		VBox box = new VBox(8, title, input, output, lineGraph.getGraph());
+		VBox box = new VBox(8, title, input, output, graphs.getGraph());
 
 		StackPane stack = new StackPane(box);
 		stack.setMargin(box, new Insets(30));
