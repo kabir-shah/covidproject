@@ -38,6 +38,9 @@ public class App extends Application {
 					inputText.substring(command.length() + 1).split(",") :
 					new String[]{};
 
+				// Clear old text.
+				output.setText("");
+
 				if (command.equals("update")) {
 					Data.update();
 					output.setText("Data successfully updated.");
