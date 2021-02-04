@@ -32,7 +32,7 @@ public class Data {
 	}
 
 	static public DataVaccinations vaccinations(String location) {
-		DataVaccinations data = new DataVaccinations();
+		DataVaccinations data = new DataVaccinations(location);
 
 		try {
 			BufferedReader reader = Files.newBufferedReader(load("vaccinations.csv"));

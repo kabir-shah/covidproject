@@ -16,6 +16,7 @@ import javafx.event.EventHandler;
 import javafx.stage.Stage;
 
 import covidproject.Data;
+import covidproject.DataVaccinations;
 
 public class App extends Application {
 	public void start(Stage stage) {
@@ -41,11 +42,17 @@ public class App extends Application {
 					Data.update();
 					output.setText("Data successfully updated.");
 				} else if (command.equals("vaccinations")) {
-					graphs.updateGraph(
-							args.length > 0 ?
-								Data.vaccinations(args[0]) :
-								Data.vaccinations("United States")
-					);
+					ArrayList<DataVaccinations> allDataVaccinations = new ArrayList<DataVaccinations>();
+
+					if (args.length == 0) {
+						allDataVaccinations.add(Data.vaccinations("United States"));
+					} else {
+						for (String location : args) {
+							allDataVaccinations.add(Data.vaccinations(location));
+						}
+					}
+
+					graphs.updateGraph(allDataVaccinations.get(0));
 				} else {
 					output.setText("Command not recognized, your command was: " + command);
 				}
