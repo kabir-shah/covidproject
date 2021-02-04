@@ -28,9 +28,9 @@ public class GraphTest {
         NumberAxis xAxis = new NumberAxis(1609488000000L, new Date().getTime(), 86400000); 
         xAxis.setLabel("Time");   
         xAxis.setTickLabelFormatter((StringConverter<Number>)(new DateCoordinate()));
-        Number maxValue = data.getYValues().get(data.getYValues().size() - 1);
+        long maxValue = data.getYValues().get(data.getYValues().size() - 1);
 
-        NumberAxis yAxis = new NumberAxis(0, maxValue, maxValue / 10); 
+        NumberAxis yAxis = new NumberAxis(0, maxValue * 11 / 10, maxValue / 10); 
         yAxis.setLabel("Vaccines");
 
         linechart = new LineChart(xAxis, yAxis);

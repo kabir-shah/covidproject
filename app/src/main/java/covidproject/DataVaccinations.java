@@ -3,23 +3,29 @@ package covidproject;
 import java.util.ArrayList;
 
 public class DataVaccinations {
+	private String location;
 	private ArrayList<Number> xs;
-	private ArrayList<Number> ys;
+	private ArrayList<Integer> ys;
 
-	public DataVaccinations() {
+	public DataVaccinations(String l) {
+		location = l;
 		xs = new ArrayList<Number>();
-		ys = new ArrayList<Number>();
+		ys = new ArrayList<Integer>();
+	}
+
+	public String getLocation() {
+		return location;
 	}
 
 	public ArrayList<Number> getXValues() {
 		return xs;
 	}
 
-	public ArrayList<Number> getYValues() {
+	public ArrayList<Integer> getYValues() {
 		return ys;
 	}
 
-	public void add(Number x, Number y) {
+	public void add(Number x, Integer y) {
 		xs.add(x);
 		ys.add(y);
 	}
