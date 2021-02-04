@@ -14,9 +14,7 @@ import javafx.util.StringConverter;
 import javafx.scene.layout.VBox;
 
 public class GraphTest {
-    LineChart linechart;
     VBox box = new VBox();
-    XYChart.Series series = new XYChart.Series();
     public GraphTest() { 
     }
 
@@ -25,11 +23,14 @@ public class GraphTest {
     }
 
     public void updateGraph(DataVaccinations data) {
+        LineChart linechart;
+        XYChart.Series series = new XYChart.Series();
         NumberAxis xAxis = new NumberAxis(1609488000000L, new Date().getTime(), 86400000); 
         xAxis.setLabel("Time");   
         xAxis.setTickLabelFormatter((StringConverter<Number>)(new DateCoordinate()));
+        Number maxValue = data.getYValues().get(data.getYValues().size() - 1);
 
-        NumberAxis yAxis = new NumberAxis(0, 50000000, 1000000); 
+        NumberAxis yAxis = new NumberAxis(0, maxValue, maxValue / 10); 
         yAxis.setLabel("Vaccines");
 
         linechart = new LineChart(xAxis, yAxis);
