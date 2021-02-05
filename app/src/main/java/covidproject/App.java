@@ -17,10 +17,14 @@ import javafx.stage.Stage;
 
 import covidproject.Data;
 import covidproject.DataVaccinations;
+import covidproject.GraphTest;
+import covidproject.Textual;
 
 public class App extends Application {
 	public void start(Stage stage) {
 		GraphTest graphs = new GraphTest();
+		Textual texts = new Textual();
+		ArrayList<DataVaccinations> allDataVaccinations = new ArrayList<DataVaccinations>();
 
 		Text title = new Text("Covid Project");
 		title.setFont(Font.font("helvetica", FontWeight.BOLD, FontPosture.REGULAR, 30));
@@ -38,15 +42,16 @@ public class App extends Application {
 					inputText.substring(command.length() + 1).split(",") :
 					new String[]{};
 
-				// Clear old text.
+				// Clear old output.
 				output.setText("");
 
-				if (command.equals("update")) {
+				if (command.equals("clear")) {
+					// TODO: clear graphs
+					texts.clear();
+				} else if (command.equals("update")) {
 					Data.update();
 					output.setText("Data successfully updated.");
 				} else if (command.equals("vaccinations")) {
-					ArrayList<DataVaccinations> allDataVaccinations = new ArrayList<DataVaccinations>();
-
 					if (args.length == 0) {
 						allDataVaccinations.add(Data.vaccinations("United States"));
 					} else {
@@ -56,13 +61,14 @@ public class App extends Application {
 					}
 
 					graphs.updateGraph(allDataVaccinations);
+					texts.vaccinations(allDataVaccinations);
 				} else {
 					output.setText("Command not recognized, your command was: " + command);
 				}
 			}
 		});
 
-		VBox box = new VBox(8, title, input, output, graphs.getGraph());
+		VBox box = new VBox(8, title, input, output, texts.getText(), graphs.getGraph());
 
 		StackPane stack = new StackPane(box);
 		stack.setMargin(box, new Insets(30));
