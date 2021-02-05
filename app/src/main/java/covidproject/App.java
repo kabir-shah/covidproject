@@ -46,7 +46,7 @@ public class App extends Application {
 				output.setText("");
 
 				if (command.equals("clear")) {
-					// TODO: clear graphs
+					graphs.clearBox();
 					texts.clear();
 				} else if (command.equals("update")) {
 					Data.update();
