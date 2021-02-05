@@ -21,9 +21,12 @@ public class GraphTest {
     public VBox getGraph() {
         return box;
     }
-
-    public void updateGraph(ArrayList<DataVaccinations> data) {
+    
+    public void clearBox() {
         box.getChildren().clear();
+    }
+    public void updateGraph(ArrayList<DataVaccinations> data) {
+        clearBox();
         long maxValue = data.get(0).getYValues().get(data.get(0).getYValues().size() - 1);
         for (int k = 1; k < data.size(); k++) {
             if (data.get(k).getYValues().get(data.get(k).getYValues().size() - 1) > maxValue) {
