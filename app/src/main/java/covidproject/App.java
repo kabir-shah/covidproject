@@ -8,6 +8,7 @@ import javafx.scene.text.Text;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.FontPosture;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.StackPane;
@@ -133,7 +134,12 @@ public class App extends Application {
 		StackPane stack = new StackPane(box);
 		stack.setMargin(box, new Insets(30));
 
-		Scene scene = new Scene(stack, 1000, 750);
+		ScrollPane pane = new ScrollPane();
+		pane.setPrefSize(1000, 750);
+		pane.setFitToWidth(true);
+		pane.setContent(stack);
+
+		Scene scene = new Scene(pane, 1000, 750);
 		stage.setTitle("Covid Project");
 		stage.setScene(scene);
 		stage.show();
