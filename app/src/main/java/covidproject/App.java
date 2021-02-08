@@ -56,6 +56,8 @@ public class App extends Application {
 					allDataVaccinations.clear();
 					allDataVaccinationsPerHundred.clear();
 					allDataPeopleVaccinated.clear();
+					allDataDailyVaccinations.clear();
+					allDataDailyVaccinationsPerM.clear();
 					graphs.clearBox();
 					texts.clear();
 				} else if (command.equals("update")) {
