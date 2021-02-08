@@ -19,6 +19,7 @@ import covidproject.Data;
 import covidproject.DataVaccinations;
 import covidproject.DataVaccinationsPerHundred;
 import covidproject.DataPeopleVaccinated;
+import covidproject.DataDailyVaccinations;
 import covidproject.GraphTest;
 import covidproject.Textual;
 
@@ -29,6 +30,7 @@ public class App extends Application {
 		ArrayList<DataVaccinations> allDataVaccinations = new ArrayList<DataVaccinations>();
 		ArrayList<DataVaccinationsPerHundred> allDataVaccinationsPerHundred = new ArrayList<DataVaccinationsPerHundred>();
 		ArrayList<DataPeopleVaccinated> allDataPeopleVaccinated = new ArrayList<DataPeopleVaccinated>();
+		ArrayList<DataDailyVaccinations> allDataDailyVaccinations = new ArrayList<DataDailyVaccinations>();
 
 		Text title = new Text("Covid Project");
 		title.setFont(Font.font("helvetica", FontWeight.BOLD, FontPosture.REGULAR, 30));
@@ -93,6 +95,18 @@ public class App extends Application {
 					// TODO: add textual for this
 					graphs.peopleVaccinated(allDataPeopleVaccinated);
 					// texts.peopleVaccinated(allDataVaccinationsPerHundred);
+				} else if (command.equals("daily-vaccinations")) {
+					if (args.length == 0) {
+						allDataDailyVaccinations.add(Data.dailyVaccinations("United States"));
+					} else {
+						for (String location : args) {
+							allDataDailyVaccinations.add(Data.dailyVaccinations(location));
+						}
+					}
+
+					// TODO: add textual for this
+					graphs.dailyVaccinations(allDataDailyVaccinations);
+					// texts.dailyVaccinations(allDataDailyVaccinations);
 				} else {
 					output.setText("Command not recognized, your command was: " + command);
 				}
