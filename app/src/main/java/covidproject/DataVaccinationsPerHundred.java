@@ -5,12 +5,12 @@ import java.util.ArrayList;
 public class DataVaccinationsPerHundred {
 	private String location;
 	private ArrayList<Number> xs;
-	private ArrayList<Integer> ys;
+	private ArrayList<Float> ys;
 
 	public DataVaccinationsPerHundred(String l) {
 		location = l;
 		xs = new ArrayList<Number>();
-		ys = new ArrayList<Integer>();
+		ys = new ArrayList<Float>();
 	}
 
 	public String getLocation() {
@@ -21,11 +21,11 @@ public class DataVaccinationsPerHundred {
 		return xs;
 	}
 
-	public ArrayList<Integer> getYValues() {
+	public ArrayList<Float> getYValues() {
 		return ys;
 	}
 
-	public void add(Number x, Integer y) {
+	public void add(Number x, Float y) {
 		xs.add(x);
 		ys.add(y);
 	}

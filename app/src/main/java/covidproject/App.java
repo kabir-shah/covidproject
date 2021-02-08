@@ -62,7 +62,7 @@ public class App extends Application {
 						}
 					}
 
-					graphs.updateGraph(allDataVaccinations);
+					graphs.vaccinations(allDataVaccinations);
 					texts.vaccinations(allDataVaccinations);
 				} else if (command.equals("vaccinations-per-hundred")) {
 					if (args.length == 0) {
@@ -74,8 +74,8 @@ public class App extends Application {
 					}
 
 					// TODO: add textual for this
-					graphs.updateGraph(allDataVaccinationsPerHundred);
-					// texts.vaccinations(allDataVaccinationsPerHundred);
+					graphs.vaccinationsPerHundred(allDataVaccinationsPerHundred);
+					// texts.vaccinationsPerHundred(allDataVaccinationsPerHundred);
 				} else {
 					output.setText("Command not recognized, your command was: " + command);
 				}
