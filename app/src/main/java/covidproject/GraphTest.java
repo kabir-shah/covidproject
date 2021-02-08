@@ -25,9 +25,9 @@ public class GraphTest {
     public void clearBox() {
         box.getChildren().clear();
     }
-    public void updateGraph(ArrayList<DataVaccinations> data) {
+    public void vaccinations(ArrayList<DataVaccinations> data) {
         clearBox();
-        long maxValue = data.get(0).getYValues().get(data.get(0).getYValues().size() - 1);
+        float maxValue = data.get(0).getYValues().get(data.get(0).getYValues().size() - 1);
         for (int k = 1; k < data.size(); k++) {
             if (data.get(k).getYValues().get(data.get(k).getYValues().size() - 1) > maxValue) {
                 maxValue = data.get(k).getYValues().get(data.get(k).getYValues().size() - 1);
@@ -48,6 +48,82 @@ public class GraphTest {
             linechart.setTitle("Vaccines dispensed in " + data.get(j).getLocation());
 
             series.setName("Vaccines over time");
+
+
+            series.getData().clear();
+
+            for (int i = 0; i < data.get(j).getXValues().size(); i++) {
+                series.getData().add(new XYChart.Data(data.get(j).getXValues().get(i), data.get(j).getYValues().get(i)));
+            }
+
+            linechart.getData().clear();
+            linechart.getData().add(series);
+
+            
+            box.getChildren().add(linechart);
+        }
+    }
+    public void vaccinationsPerHundred(ArrayList<DataVaccinationsPerHundred> data) {
+        clearBox();
+        float maxValue = data.get(0).getYValues().get(data.get(0).getYValues().size() - 1);
+        for (int k = 1; k < data.size(); k++) {
+            if (data.get(k).getYValues().get(data.get(k).getYValues().size() - 1) > maxValue) {
+                maxValue = data.get(k).getYValues().get(data.get(k).getYValues().size() - 1);
+            }
+        }
+        for (int j = 0; j < data.size(); j++) {
+            LineChart linechart;
+            XYChart.Series series = new XYChart.Series();
+            NumberAxis xAxis = new NumberAxis(1609488000000L, new Date().getTime(), 86400000); 
+            xAxis.setLabel("Time");   
+            xAxis.setTickLabelFormatter((StringConverter<Number>)(new DateCoordinate()));
+            
+            NumberAxis yAxis = new NumberAxis(0, 100, 10); 
+            yAxis.setLabel("Vaccines per hundred people");
+
+            linechart = new LineChart(xAxis, yAxis);
+            linechart.setAnimated(false);
+            linechart.setTitle("Vaccines dispensed per hundred people in " + data.get(j).getLocation());
+
+            series.setName("Vaccines per hundred people over time");
+
+
+            series.getData().clear();
+
+            for (int i = 0; i < data.get(j).getXValues().size(); i++) {
+                series.getData().add(new XYChart.Data(data.get(j).getXValues().get(i), data.get(j).getYValues().get(i)));
+            }
+
+            linechart.getData().clear();
+            linechart.getData().add(series);
+
+            
+            box.getChildren().add(linechart);
+        }
+    }
+    public void peopleVaccinated(ArrayList<DataPeopleVaccinated> data) {
+        clearBox();
+        float maxValue = data.get(0).getYValues().get(data.get(0).getYValues().size() - 1);
+        for (int k = 1; k < data.size(); k++) {
+            if (data.get(k).getYValues().get(data.get(k).getYValues().size() - 1) > maxValue) {
+                maxValue = data.get(k).getYValues().get(data.get(k).getYValues().size() - 1);
+            }
+        }
+        for (int j = 0; j < data.size(); j++) {
+            LineChart linechart;
+            XYChart.Series series = new XYChart.Series();
+            NumberAxis xAxis = new NumberAxis(1609488000000L, new Date().getTime(), 86400000); 
+            xAxis.setLabel("Time");   
+            xAxis.setTickLabelFormatter((StringConverter<Number>)(new DateCoordinate()));
+            
+            NumberAxis yAxis = new NumberAxis(0, 100, 10); 
+            yAxis.setLabel("People");
+
+            linechart = new LineChart(xAxis, yAxis);
+            linechart.setAnimated(false);
+            linechart.setTitle("People who received the vaccine in " + data.get(j).getLocation());
+
+            series.setName("People receiving the vaccine over time");
 
 
             series.getData().clear();
