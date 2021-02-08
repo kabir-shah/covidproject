@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 import covidproject.Data;
 import covidproject.DataVaccinations;
 import covidproject.DataVaccinationsPerHundred;
+import covidproject.DataPeopleVaccinated;
 import covidproject.GraphTest;
 import covidproject.Textual;
 
@@ -27,6 +28,7 @@ public class App extends Application {
 		Textual texts = new Textual();
 		ArrayList<DataVaccinations> allDataVaccinations = new ArrayList<DataVaccinations>();
 		ArrayList<DataVaccinationsPerHundred> allDataVaccinationsPerHundred = new ArrayList<DataVaccinationsPerHundred>();
+		ArrayList<DataPeopleVaccinated> allDataPeopleVaccinated = new ArrayList<DataPeopleVaccinated>();
 
 		Text title = new Text("Covid Project");
 		title.setFont(Font.font("helvetica", FontWeight.BOLD, FontPosture.REGULAR, 30));
@@ -50,6 +52,7 @@ public class App extends Application {
 				if (command.equals("clear")) {
 					allDataVaccinations.clear();
 					allDataVaccinationsPerHundred.clear();
+					allDataPeopleVaccinated.clear();
 					graphs.clearBox();
 					texts.clear();
 				} else if (command.equals("update")) {
@@ -78,6 +81,18 @@ public class App extends Application {
 					// TODO: add textual for this
 					graphs.vaccinationsPerHundred(allDataVaccinationsPerHundred);
 					// texts.vaccinationsPerHundred(allDataVaccinationsPerHundred);
+				} else if (command.equals("people-vaccinated")) {
+					if (args.length == 0) {
+						allDataPeopleVaccinated.add(Data.peopleVaccinated("United States"));
+					} else {
+						for (String location : args) {
+							allDataPeopleVaccinated.add(Data.peopleVaccinated(location));
+						}
+					}
+
+					// TODO: add textual for this
+					graphs.peopleVaccinated(allDataPeopleVaccinated);
+					// texts.peopleVaccinated(allDataVaccinationsPerHundred);
 				} else {
 					output.setText("Command not recognized, your command was: " + command);
 				}
