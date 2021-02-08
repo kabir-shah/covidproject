@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 
 import covidproject.Data;
 import covidproject.DataVaccinations;
+import covidproject.DataVaccinationsPerHundred;
 import covidproject.GraphTest;
 import covidproject.Textual;
 
@@ -25,6 +26,7 @@ public class App extends Application {
 		GraphTest graphs = new GraphTest();
 		Textual texts = new Textual();
 		ArrayList<DataVaccinations> allDataVaccinations = new ArrayList<DataVaccinations>();
+		ArrayList<DataVaccinationsPerHundred> allDataVaccinationsPerHundred = new ArrayList<DataVaccinationsPerHundred>();
 
 		Text title = new Text("Covid Project");
 		title.setFont(Font.font("helvetica", FontWeight.BOLD, FontPosture.REGULAR, 30));
@@ -62,6 +64,18 @@ public class App extends Application {
 
 					graphs.updateGraph(allDataVaccinations);
 					texts.vaccinations(allDataVaccinations);
+				} else if (command.equals("vaccinations-per-hundred")) {
+					if (args.length == 0) {
+						allDataVaccinationsPerHundred.add(Data.vaccinationsPerHundred("United States"));
+					} else {
+						for (String location : args) {
+							allDataVaccinationsPerHundred.add(Data.vaccinationsPerHundred(location));
+						}
+					}
+
+					// TODO: add textual for this
+					graphs.updateGraph(allDataVaccinationsPerHundred);
+					// texts.vaccinations(allDataVaccinationsPerHundred);
 				} else {
 					output.setText("Command not recognized, your command was: " + command);
 				}
