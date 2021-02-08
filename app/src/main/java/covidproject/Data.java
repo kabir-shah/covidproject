@@ -12,6 +12,7 @@ import covidproject.DataVaccinations;
 import covidproject.DataVaccinationsPerHundred;
 import covidproject.DataPeopleVaccinated;
 import covidproject.DataDailyVaccinations;
+import covidproject.DataDailyVaccinationsPerM;
 import covidproject.DateCoordinate;
 
 public class Data {
@@ -114,6 +115,29 @@ public class Data {
 				String[] row = rowString.split(",");
 				if (row[0].equals(location) && row[7].length() > 0) {
 					data.add(converter.fromString(row[2]), Integer.parseInt(row[7]));
+				}
+			}
+
+			reader.close();
+		} catch (Exception e) {
+			System.out.println("ERROR: Failed to process data.");
+			System.out.println(e);
+		}
+
+		return data;
+	}
+
+	static public DataDailyVaccinationsPerM dailyVaccinationsPerM(String location) {
+		DataDailyVaccinationsPerM data = new DataDailyVaccinationsPerM(location);
+
+		try {
+			BufferedReader reader = Files.newBufferedReader(load("vaccinations.csv"));
+			String rowString;
+
+			while ((rowString = reader.readLine()) != null) {
+				String[] row = rowString.split(",");
+				if (row[0].equals(location) && row[11].length() > 0) {
+					data.add(converter.fromString(row[2]), Integer.parseInt(row[11]));
 				}
 			}
 

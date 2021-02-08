@@ -31,6 +31,7 @@ public class App extends Application {
 		ArrayList<DataVaccinationsPerHundred> allDataVaccinationsPerHundred = new ArrayList<DataVaccinationsPerHundred>();
 		ArrayList<DataPeopleVaccinated> allDataPeopleVaccinated = new ArrayList<DataPeopleVaccinated>();
 		ArrayList<DataDailyVaccinations> allDataDailyVaccinations = new ArrayList<DataDailyVaccinations>();
+		ArrayList<DataDailyVaccinationsPerM> allDataDailyVaccinationsPerM = new ArrayList<DataDailyVaccinationsPerM>();
 
 		Text title = new Text("Covid Project");
 		title.setFont(Font.font("helvetica", FontWeight.BOLD, FontPosture.REGULAR, 30));
@@ -107,6 +108,18 @@ public class App extends Application {
 					// TODO: add textual for this
 					graphs.dailyVaccinations(allDataDailyVaccinations);
 					// texts.dailyVaccinations(allDataDailyVaccinations);
+				} else if (command.equals("daily-vaccinations-per-million")) {
+					if (args.length == 0) {
+						allDataDailyVaccinationsPerM.add(Data.dailyVaccinationsPerM("United States"));
+					} else {
+						for (String location : args) {
+							allDataDailyVaccinationsPerM.add(Data.dailyVaccinationsPerM(location));
+						}
+					}
+
+					// TODO: add textual for this
+					graphs.dailyVaccinationsPerM(allDataDailyVaccinationsPerM);
+					// texts.dailyVaccinationsPerM(allDataDailyVaccinationsPerM);
 				} else {
 					output.setText("Command not recognized, your command was: " + command);
 				}
