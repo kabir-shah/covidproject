@@ -48,6 +48,8 @@ public class App extends Application {
 				output.setText("");
 
 				if (command.equals("clear")) {
+					allDataVaccinations.clear();
+					allDataVaccinationsPerHundred.clear();
 					graphs.clearBox();
 					texts.clear();
 				} else if (command.equals("update")) {
