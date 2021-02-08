@@ -136,7 +136,7 @@ public class Data {
 
 			while ((rowString = reader.readLine()) != null) {
 				String[] row = rowString.split(",");
-				if (row[0].equals(location) && row[11].length() > 0) {
+				if (row.length == 12 && row[0].equals(location) && row[11].length() > 0) {
 					data.add(converter.fromString(row[2]), Integer.parseInt(row[11]));
 				}
 			}
