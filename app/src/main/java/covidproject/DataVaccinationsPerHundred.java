@@ -7,7 +7,7 @@ public class DataVaccinationsPerHundred {
 	private ArrayList<Number> xs;
 	private ArrayList<Integer> ys;
 
-	public DataVaccinations(String l) {
+	public DataVaccinationsPerHundred(String l) {
 		location = l;
 		xs = new ArrayList<Number>();
 		ys = new ArrayList<Integer>();
