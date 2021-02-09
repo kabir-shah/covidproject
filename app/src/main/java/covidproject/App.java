@@ -84,7 +84,6 @@ public class App extends Application {
 						}
 					}
 
-					// TODO: add textual for this
 					graphs.vaccinationsPerHundred(allDataVaccinationsPerHundred);
 					texts.vaccinationsPerHundred(allDataVaccinationsPerHundred);
 				} else if (command.equals("people-vaccinated")) {
@@ -96,7 +95,6 @@ public class App extends Application {
 						}
 					}
 
-					// TODO: add textual for this
 					graphs.peopleVaccinated(allDataPeopleVaccinated);
 					texts.peopleVaccinated(allDataPeopleVaccinated);
 				} else if (command.equals("daily-vaccinations")) {
@@ -108,9 +106,8 @@ public class App extends Application {
 						}
 					}
 
-					// TODO: add textual for this
 					graphs.dailyVaccinations(allDataDailyVaccinations);
-					// texts.dailyVaccinations(allDataDailyVaccinations);
+					texts.dailyVaccinations(allDataDailyVaccinations);
 				} else if (command.equals("daily-vaccinations-per-million")) {
 					if (args.length == 0) {
 						allDataDailyVaccinationsPerM.add(Data.dailyVaccinationsPerM("United States"));
@@ -120,9 +117,8 @@ public class App extends Application {
 						}
 					}
 
-					// TODO: add textual for this
 					graphs.dailyVaccinationsPerM(allDataDailyVaccinationsPerM);
-					// texts.dailyVaccinationsPerM(allDataDailyVaccinationsPerM);
+					texts.dailyVaccinationsPerM(allDataDailyVaccinationsPerM);
 				} else {
 					output.setText("Command not recognized, your command was: " + command);
 				}
