@@ -86,7 +86,7 @@ public class App extends Application {
 
 					// TODO: add textual for this
 					graphs.vaccinationsPerHundred(allDataVaccinationsPerHundred);
-					// texts.vaccinationsPerHundred(allDataVaccinationsPerHundred);
+					texts.vaccinationsPerHundred(allDataVaccinationsPerHundred);
 				} else if (command.equals("people-vaccinated")) {
 					if (args.length == 0) {
 						allDataPeopleVaccinated.add(Data.peopleVaccinated("United States"));
